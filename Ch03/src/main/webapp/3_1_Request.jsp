@@ -84,5 +84,15 @@
 			</tr>
 		</table>
 	</form>
+	
+	<h3>Client 정보 출력</h3>
+	<p>
+		헤더정보 : <%= request.getHeader("User-Agent") %><br />
+		통신규약 : <%= request.getProtocol() %><br />
+		서버이름 : <%= request.getServerName() %><br /> <!-- 도메인 -->
+		요청주소 : <%= request.getRequestURL() %><br /> 
+		요청경로 : <%= request.getRequestURI() %><br />
+		사용자IP : <%= request.getRemoteAddr() %><br />
+	</p>
 </body>
 </html>
