@@ -6,7 +6,7 @@
 	<title>4_1_IncludeTag</title>
 	<!-- 
 		날짜 : 2021/03/24
-		이름 : 김철학
+		이름 : 김나현
 		내용 : JSP Include 액션태그 실습하기
 		
 		include 지시자
