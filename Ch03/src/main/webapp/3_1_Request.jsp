@@ -25,6 +25,8 @@
 </head>
 <body>
 	<h3>3.JSP request 객체</h3>
+	
+	<h3>로그인</h3> <!-- 바꼈음!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 	<form action="./proc/loginProc.jsp" method="post">
 		<table border="1">
 			<tr>
@@ -53,8 +55,8 @@
 			<tr>
 				<td>성별</td>
 				<td>
-					<label></label><input type="radio" name="gender" value="1"/>남</label>
-					<label></label><input type="radio" name="gender" value="2"/>여</label>
+					<label><input type="radio" name="gender" value="1"/>남</label>
+					<label><input type="radio" name="gender" value="2"/>여</label>
 				</td>
 			</tr>
 			<tr>

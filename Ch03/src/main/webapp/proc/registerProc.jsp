@@ -49,6 +49,6 @@
 			<td><%= addr %></td>
 		</tr>
 	</table>
-	<a href="../3_1_Requset.jsp">뒤로가기</a>
+	<a href="../3_1_Request.jsp">뒤로가기</a>
 </body>
 </html>
