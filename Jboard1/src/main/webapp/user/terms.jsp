@@ -99,8 +99,8 @@
                 </tr>
             </table>
             <div>
-                <a href="/jboard1/user/login.jsp">취소</a>
-                <a href="/jboard1/user/register.jsp">다음</a>
+                <a href="/Jboard1/user/login.jsp">취소</a>
+                <a href="/Jboard1/user/register.jsp">다음</a>
             </div>
         </section>
     </div>
