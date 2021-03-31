@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.config.DBConfig"%>
 <%@page import="kr.co.jboard1.bean.TermsBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -6,15 +7,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 데이터베이스 처리 1~6단계
-	String host= "jdbc:mysql://192.168.10.114:3306/knh";
-	String user = "knh";
-	String pass = "1234";
 	
-	// 1단계
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	// 2단계
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	// 1,2 단계
+	/* DBConfig db = DBConfig.getInstance();
+	Connection conn = db.getConnection(); */
+	Connection conn = DBConfig.getInstance().getConnection();
 	
 	// 3단계
 	Statement stmt = conn.createStatement();

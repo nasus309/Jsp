@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>글쓰기</title>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="/Jboard1/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="#">
+                <form action="/Jboard1/proc/write.jsp" method="post">
                     <table>
                         <tr>
                             <td>제목</td>
@@ -29,7 +29,7 @@
                         </tr>
                     </table>
                     <div>
-                        <a href="./list.html" class="btnCancel">취소</a>
+                        <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
                         <input type="submit"  class="btnWrite" value="작성완료">
                     </div>
                 </form>
