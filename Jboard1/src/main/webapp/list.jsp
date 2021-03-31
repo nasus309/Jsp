@@ -28,10 +28,12 @@
 	
 	int total = dao.selectCountArticle();
 	int lastPageNum = dao.getLastPageNum(total);
-	int start = dao.getLimitStart(pg); //limit용 start 변수
-	
+	int currentPage = dao.getCurrentPage(pg);
+	int start = dao.getLimitStart(currentPage); //limit용 start 변수
+	int[] groups = dao.getPageGrop(currentPage, lastPageNum);
+		
 	// 데이터베이스 처리
-	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start);
+	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(currentPage);
 	
 	/*
 	// 1,2단계
@@ -124,11 +126,18 @@
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
-                <a href="#" class="prev">이전</a>
-                <% for(int i=1; i<lastPageNum;i++){ %>
-                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>                
-                <% } %>              
-                <a href="#" class="next">다음</a>
+            	
+            	<% if(groups[0] > 1){ %>
+                <a href="/Jboard1/list.jsp?pg=<%= groups[0] - 1 %>" class="prev">이전</a>
+                <% } %>
+                
+                <% for(int i=groups[0]; i<=groups[1];i++){ %> <!--groupStart는 groups[0], groupEnd는 groups[1]-->
+                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num" <%= (currentPage == i) ? "current":"off" %>><%= i %></a>                
+                <% } %>  
+                
+                <% if(groups[0] < lastPageNum){ %>            
+                <a href="/Jboard1/list.jsp?pg=<%= groups[1] + 1 %>" class="next">다음</a>
+                <% } %>
             </div>
 
             <!-- 글쓰기 버튼 -->

@@ -20,18 +20,34 @@ public class ArticleDao {
 		return instance;
 	}
 	
-	public int getLimitStart(String pg) {
-		//null 이면 error 날 수도 있음
-		int page = 1;
-		int start = 0;
+	public int[] getPageGrop(int currentPage, int lastPageNum) {
 		
-		if(pg != null) {
-			page = Integer.parseInt(pg);
-			start = (page-1) * 10;
+		int groupCurrent = (int) Math.ceil(lastPageNum / 10.0);
+		int groupStart = (groupCurrent -1) * 10 + 1;
+		int groupEnd = groupCurrent * 10;
+		
+		if(groupEnd > lastPageNum) {
+			groupEnd = lastPageNum;
 		}
 		
-		return start;
+		int[] groups = {groupStart, groupEnd};
+		
+		return groups;
 	}
+	
+	
+	public int getCurrentPage(String pg) {
+		int currentPage = 1;
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		return currentPage;
+	}
+	
+	public int getLimitStart(int currentPage) {
+		return (currentPage - 1) * 10;
+	}
+	
 	
 	public int getLastPageNum(int total) {
 		int lastPageNum = 0;
