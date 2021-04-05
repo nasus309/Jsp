@@ -1,3 +1,5 @@
+<%@page import="kr.co.jboard1.dao.UserDao"%>
+<%@page import="kr.co.jboard1.bean.UserBean"%>
 <%@page import="kr.co.jboard1.config.DBConfig"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -22,34 +24,21 @@
 	String addr2 = request.getParameter("addr2");
 	String regip = request.getRemoteAddr(); //사용자 ip 주소
 	
+	UserBean user = new UserBean();
+	user.setUid(uid);
+	user.setPass(pass1);
+	user.setName(name);
+	user.setNick(nick);
+	user.setEmail(email);
+	user.setHp(hp);
+	user.setZip(zip);
+	user.setAddr1(addr1);
+	user.setAddr2(addr2);
+	user.setRegip(regip);
+	
 	// 데이터베이스 처리 1~6 단계
+	UserDao.getInstance().insertUser(user);
 	
-	// 1,2 단계
-	Connection conn = DBConfig.getInstance().getConnection();
-	
-	// 3단계
-	Statement stmt = conn.createStatement();
-	// 4단계
-	String sql  = "INSERT INTO `JBOARD_USER` SET ";
-		   sql += "`uid`='"+uid+"',";
-		   sql += "`pass`=PASSWORD('"+pass1+"'),"; //PASSWORD() 암호화 함수
-		   sql += "`name`='"+name+"',";
-		   sql += "`nick`='"+nick+"',";
-		   sql += "`email`='"+email+"',";
-		   sql += "`hp`='"+hp+"',";
-		   /* sql += "`grade`='',";  딱히 해줄 필요 없음*/ 
-		   sql += "`zip`='"+zip+"',";
-		   sql += "`addr1`='"+addr1+"',";
-		   sql += "`addr2`='"+addr2+"',";
-		   sql += "`regip`='"+regip+"',";
-		   sql += "`rdate`=NOW();";
-	
-	stmt.executeUpdate(sql);
-		   
-	// 5단계
-	// 6단계
-	stmt.close();
-	conn.close();
 	
 	// 로그인 페이지로 리다이렉트
 	response.sendRedirect("/Jboard1/user/login.jsp");

@@ -1,5 +1,6 @@
 package kr.co.jboard1.bean;
 
+
 public class ArticleBean {
 	
 	private int seq;
@@ -16,6 +17,15 @@ public class ArticleBean {
 	
 	// 추가 필드
 	private String nick;
+	private FileBean fb; // 왜.....?
+	
+	public FileBean getFb() {
+		return fb;
+	}
+	public void setFb(FileBean fb) {
+		this.fb = fb;
+	}
+	
 	
 	public String getNick() {
 		return nick;

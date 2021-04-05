@@ -10,6 +10,7 @@
     <title>로그인</title>
     <link rel="stylesheet" href="/Jboard1/css/style.css"/>
     <script>
+    
     	var result = "<%= result %>";
     	if(result == 0){
     		alert("해당하는 회원이 없습니다. 다시 확인하시기 바랍니다.");

@@ -26,66 +26,15 @@
 	// 페이지 관련 변수 
 	ArticleDao dao = ArticleDao.getInstance();
 	
-	int total = dao.selectCountArticle();
+	int total 		= dao.selectCountArticle();
 	int lastPageNum = dao.getLastPageNum(total);
 	int currentPage = dao.getCurrentPage(pg);
-	int start = dao.getLimitStart(currentPage); //limit용 start 변수
-	int[] groups = dao.getPageGrop(currentPage, lastPageNum);
+	int start 		= dao.getLimitStart(currentPage); //limit용 start 변수
+	int[] groups 	= dao.getPageGroup(currentPage, lastPageNum);
+	int pageStartNum = dao.getPageStartNum(total, start);
 		
 	// 데이터베이스 처리
-	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(currentPage);
-	
-	/*
-	// 1,2단계
-	Connection conn = DBConfig.getInstance().getConnection();
-	
-	// 3단계
-	String sqlCount = "SELECT COUNT(*) FROM `JBOARD_ARTICLE`;";
-	Statement stmt = conn.createStatement();
-	
-	String sql  = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a ";
-		   sql += "JOIN `JBOARD_USER` AS b ON a.uid = b.uid ";
-		   sql += "ORDER BY `seq` DESC ";
-		   sql += "LIMIT ?, 10;"; // LIMIT : (index,개수) index부터 몇개?
-		   
-	PreparedStatement psmt = conn.prepareStatement(sql);
-	psmt.setInt(1, start);
-	
-	// 4단계
-	ResultSet rsCount = stmt.executeQuery(sqlCount);
-	ResultSet rs = psmt.executeQuery();
-	
-	// 5단계
-	if(rsCount.next()){
-		total = rsCount.getInt(1);
-	}
-	
-	
-	List<ArticleBean> articles = new ArrayList<>();
-	
-	while(rs.next()){
-		ArticleBean ab = new ArticleBean();
-		ab.setSeq(rs.getInt(1));
-		ab.setParent(rs.getInt(2));
-		ab.setComment(rs.getInt(3));
-		ab.setCate(rs.getString(4));
-		ab.setTitle(rs.getString(5));
-		ab.setContent(rs.getString(6));
-		ab.setFile(rs.getInt(7));
-		ab.setHit(rs.getInt(8));
-		ab.setUid(rs.getString(9));
-		ab.setRegip(rs.getString(10));
-		ab.setRdate(rs.getString(11));
-		ab.setNick(rs.getString(12));
-		
-		articles.add(ab);
-	}
-	
-	// 6단계
-	rs.close();
-	psmt.close();
-	conn.close();
-	*/
+	List<ArticleBean> articles = dao.selectArticles(start);
 	
 %>
 <!DOCTYPE html>
@@ -114,8 +63,8 @@
                     </tr>
                     <% for(ArticleBean ab: articles) { %>
                     <tr>
-                        <td><%= ab.getSeq() %></td>
-                        <td><a href="/Jboard1/view.html"><%= ab.getTitle() %></a>&nbsp;[3]</td>
+                        <td><%= pageStartNum-- %></td>
+                        <td><a href="/Jboard1/view.jsp?seq=<%= ab.getSeq() %>"><%= ab.getTitle() %></a>&nbsp;[<%= ab.getComment() %>]</td>
                         <td><%= ab.getNick() %></td>
                         <td><%= ab.getRdate().substring(2,10) %></td>
                         <td><%= ab.getHit() %></td>

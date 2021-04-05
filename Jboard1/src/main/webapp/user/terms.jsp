@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.dao.UserDao"%>
 <%@page import="kr.co.jboard1.config.DBConfig"%>
 <%@page import="kr.co.jboard1.bean.TermsBean"%>
 <%@page import="java.sql.ResultSet"%>
@@ -7,35 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 데이터베이스 처리 1~6단계
-	
-	// 1,2 단계
-	/* DBConfig db = DBConfig.getInstance();
-	Connection conn = db.getConnection(); */
-	Connection conn = DBConfig.getInstance().getConnection();
-	
-	// 3단계
-	Statement stmt = conn.createStatement();
-	
-	// 4단계
-	String sql = "SELECT * FROM `JBOARD_TERMS`;";
-	ResultSet rs = stmt.executeQuery(sql);
-	
-	// 5단계
-	TermsBean tb = new TermsBean();
-	
-	if(rs.next()){
-		tb.setTerms(rs.getString(1));
-		tb.setPrivacy(rs.getString(2));
-	};
-	
-	
-	
-	// 6단계
-	rs.close();
-	stmt.close();
-	conn.close();
-	
-	
+		
+	TermsBean tb = UserDao.getInstance().selectTerms();
 	
 %>
 <!DOCTYPE html>

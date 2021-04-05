@@ -11,7 +11,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="/Jboard1/proc/write.jsp" method="post">
+                <form action="/Jboard1/proc/write.jsp" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>제목</td>
