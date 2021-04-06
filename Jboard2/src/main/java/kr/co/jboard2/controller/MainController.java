@@ -82,12 +82,18 @@ public class MainController extends HttpServlet{
 		CommonService instance = (CommonService)instances.get(key); // 다형성 : interface(CommonService)로 형변환
 		
 		// service 객체 실행후 view 리턴 받기
-		String view = instance.requestProc(req, resp);
+		String result = instance.requestProc(req, resp); //result는 문자열("redirect:/Jboard2/user/login.do")
 		
-		// View 포워드
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req,resp);
-		
+		if(result.startsWith("redirect:")) { //result가 리다이렉트 명령이라면
+			//리다이렉트
+			String redirectUrl = result.substring(9); // "/Jboard2/user/login.do"
+			resp.sendRedirect(redirectUrl);
+			
+		}else {
+			// View 포워드
+			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
+			dispatcher.forward(req,resp);
+		}
 		
 	}
 	

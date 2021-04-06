@@ -22,6 +22,13 @@
   	</auth-constraint>
   </security-constraint>
   
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>free pages</web-resource-name>
+  		<url-pattern>/index.jsp</url-pattern>  <!-- index.jsp만 예외로 작동되게? -->
+  	</web-resource-collection>
+  </security-constraint>
+  
   <!-- 컨트롤러 등록 -->
   <servlet>
   	<servlet-name>MainController</servlet-name>
@@ -33,5 +40,26 @@
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
+  <!-- 전송 데이터 문자 인코딩 설정 -->
+  <filter>
+  	<filter-name>SetCharacterEncodingFilter</filter-name>
+  	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>SetCharacterEncodingFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  
+
   
 </web-app>
+
+
+
+
+

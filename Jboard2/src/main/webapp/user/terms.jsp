@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>약관</title>
-    <link rel="stylesheet" href="../css/style.css"/>    
+    <link rel="stylesheet" href="/Jboard2/css/style.css"/>    
 </head>
 <body>
     <div id="wrapper">
@@ -13,7 +13,7 @@
                 <caption>사이트 이용약관</caption>
                 <tr>
                     <td>
-                        <textarea readonly>약관내용</textarea>
+                        <textarea readonly>${requestScope.vo.getTerms()}</textarea>
                         <p>
                             <label><input type="checkbox" name="chk1"/>동의합니다.</label>
                         </p>
@@ -24,7 +24,7 @@
                 <caption>개인정보 취급방침</caption>
                 <tr>
                     <td>
-                        <textarea readonly>개인정보 내용</textarea>
+                        <textarea readonly>${vo.privacy}</textarea>
                         <p>
                             <label><input type="checkbox" name="chk2"/>동의합니다.</label>
                         </p>
@@ -32,8 +32,9 @@
                 </tr>
             </table>
             <div>
-                <a href="./login.html">취소</a>
-                <a href="./register.html">다음</a>
+                <a href="/Jboard2/user/login.do
+                ">취소</a>
+                <a href="/Jboard2/user/register.do">다음</a>
             </div>
         </section>
     </div>

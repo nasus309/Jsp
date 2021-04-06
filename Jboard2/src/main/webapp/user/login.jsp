@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="/Jboard2/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">
@@ -12,11 +12,11 @@
             <form action="../list.html">
                 <table border="0">
                     <tr>
-                        <td><img src="../img/login_ico_id.png" alt="아이디"/></td>
+                        <td><img src="/Jboard2/img/login_ico_id.png" alt="아이디"/></td>
                         <td><input type="text" name="uid" placeholder="아이디를 입력" /></td>
                     </tr>
                     <tr>
-                        <td><img src="../img/login_ico_pw.png" alt="비밀번호"/></td>
+                        <td><img src="/Jboard2/img/login_ico_pw.png" alt="비밀번호"/></td>
                         <td><input type="password" name="pass" placeholder="비밀번호 입력" /></td>
                     </tr>
                 </table>
@@ -28,7 +28,7 @@
                 <p>
                     아직 회원이 아니시면 회원으로 가입하세요.
                 </p>
-                <a href="./terms.html">회원가입</a>
+                <a href="/Jboard2/user/terms.do">회원가입</a> <!-- TermsService가 실행? -->
             </div>
 
         </section>
