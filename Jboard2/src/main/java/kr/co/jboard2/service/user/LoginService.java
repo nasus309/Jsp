@@ -21,24 +21,22 @@ public class LoginService implements CommonService {
 			UserVo vo = UserDao.getInstance().selectUser(uid, pass);
 			
 			if(vo != null) {
-				// È¸¿øÀÌ ¸ÂÀ» °æ¿ì
+				// íšŒì›ì´ ë§ì„ ê²½ìš°
 				HttpSession sess = req.getSession();
-				sess.setAttribute("suer", vo);
+				sess.setAttribute("suser", vo);
 				
-				// ¸®´ÙÀÌ·ºÆ®
+				// ë¦¬ë‹¤ì´ë ‰íŠ¸
 				return "redirect:/Jboard2/list.do";
 			}else {
-				// È¸¿øÀÌ ¾Æ´Ò °æ¿ì
+				// íšŒì›ì´ ì•„ë‹ ê²½ìš°
 				return "redirect:/Jboard2/user/login.do?result=0";
 			}
 			
-			
-			
 		}else {
 			//get
-			 
+			return "/user/login.jsp"; // ë·° ì¶œë ¥.
 		}
-		return "/user/login.jsp";
+		
 		
 	}
 }

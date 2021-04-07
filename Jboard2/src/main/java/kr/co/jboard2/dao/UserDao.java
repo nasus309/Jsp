@@ -21,9 +21,9 @@ public class UserDao {
 	
 	public void insertUser(UserVo vo) throws Exception{
 		
-		// 1,2´Ü°è
+		// 1,2ë‹¨ê³„
 		Connection conn = DBConfig.getInstance().getConnection();
-		// 3´Ü°è
+		// 3ë‹¨ê³„
 		PreparedStatement  psmt = conn.prepareStatement(Sql.INSERT_USER);
 		psmt.setString(1, vo.getUid());
 		psmt.setString(2, vo.getPass());
@@ -35,10 +35,10 @@ public class UserDao {
 		psmt.setString(8, vo.getAddr1());
 		psmt.setString(9, vo.getAddr2());
 		psmt.setString(10, vo.getRegip());
-		// 4´Ü°è
+		// 4ë‹¨ê³„
 		psmt.executeUpdate();
-		// 5´Ü°è
-		// 6´Ü°è
+		// 5ë‹¨ê³„
+		// 6ë‹¨ê³„
 		psmt.close();
 		conn.close();
 		
@@ -107,20 +107,20 @@ public class UserDao {
 	
 	public void selectUsers() throws Exception{}
 	public TermsVo selectTerms() throws Exception{
-		// 1,2´Ü°è
+		// 1,2ë‹¨ê³„
 		Connection conn = DBConfig.getInstance().getConnection();
-		// 3´Ü°è
+		// 3ë‹¨ê³„
 		Statement stmt = conn.createStatement();
-		// 4´Ü°è
+		// 4ë‹¨ê³„
 		ResultSet rs = stmt.executeQuery(Sql.SELECT_TERMS);
-		// 5´Ü°è
+		// 5ë‹¨ê³„
 		TermsVo vo = new TermsVo();
 		
 		if(rs.next()) {
 			vo.setTerms(rs.getString(1));
 			vo.setPrivacy(rs.getString(2));
 		}
-		// 6´Ü°è
+		// 6ë‹¨ê³„
 		rs.close();
 		conn.close();
 		stmt.close();

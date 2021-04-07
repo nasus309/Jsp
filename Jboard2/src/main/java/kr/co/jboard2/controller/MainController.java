@@ -20,19 +20,19 @@ import kr.co.jboard2.service.CommonService;
 
 public class MainController extends HttpServlet{
 
-	private static final long serialVersionUID = 1L; // ½Äº°??
-	private Map<String, Object> instances = new HashMap<>(); // ¼­ºñ½º°´Ã¼µéÀ» ¹Ì¸® ÀúÀå? ¿äÃ»ÀÌ¿À¸é °´Ã¼¸¦ ¹Ù·Î ½ÇÇà...(¿äÃ»¿À¸é °´Ã¼ ¸¸µå´Â°Ô ¾Æ´Ï¶ó)
+	private static final long serialVersionUID = 1L; // ì‹ë³„??
+	private Map<String, Object> instances = new HashMap<>(); // ì„œë¹„ìŠ¤ê°ì²´ë“¤ì„ ë¯¸ë¦¬ ì €ì¥? ìš”ì²­ì´ì˜¤ë©´ ê°ì²´ë¥¼ ë°”ë¡œ ì‹¤í–‰...(ìš”ì²­ì˜¤ë©´ ê°ì²´ ë§Œë“œëŠ”ê²Œ ì•„ë‹ˆë¼)
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// ÄÁÆ®·Ñ·¯°¡ ÃÖÃÊ ½ÇÇàµÉ ¶§ ½ÇÇàµÇ´Â ÃÊ±âÈ­ ¸Ş¼­µå
+		// ì»¨íŠ¸ë¡¤ëŸ¬ê°€ ìµœì´ˆ ì‹¤í–‰ë  ë•Œ ì‹¤í–‰ë˜ëŠ” ì´ˆê¸°í™” ë©”ì„œë“œ
 		
-		// ÇÁ·ÎÆÛÆ¼ ÆÄÀÏ (¾×¼ÇÁÖ¼Ò ¸ÊÇÎ ÆÄÀÏ) °æ·Î ±¸ÇÏ±â
+		// í”„ë¡œí¼í‹° íŒŒì¼ (ì•¡ì…˜ì£¼ì†Œ ë§µí•‘ íŒŒì¼) ê²½ë¡œ êµ¬í•˜ê¸°
 		ServletContext ctx = config.getServletContext();
-		String path = ctx.getRealPath("/WEB-INF") + "/urlMapping.properties";  /* getRealPath("/") ´Â webapppÀ» ÀÇ¹Ì */
+		String path = ctx.getRealPath("/WEB-INF") + "/urlMapping.properties";  /* getRealPath("/") ëŠ” webapppì„ ì˜ë¯¸ */
 		
-		// ÇÁ·ÎÆÛÆ¼ ÆÄÀÏ ÀÔ·Â ½ºÆ®¸² ¿¬°á
-		Properties prop = new Properties(); //hash map°ú µ¿ÀÏÇÑ °´Ã¼???
+		// í”„ë¡œí¼í‹° íŒŒì¼ ì…ë ¥ ìŠ¤íŠ¸ë¦¼ ì—°ê²°
+		Properties prop = new Properties(); //hash mapê³¼ ë™ì¼í•œ ê°ì²´???
 		
 		try {
 			FileInputStream fis = new FileInputStream(path);
@@ -42,7 +42,7 @@ public class MainController extends HttpServlet{
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		// Æ÷·ÎÆÛÆ¼ °´Ã¼ »ı¼º ¹× Service °´Ã¼ »ı¼º ÈÄ º¸°ü
+		// í¬ë¡œí¼í‹° ê°ì²´ ìƒì„± ë° Service ê°ì²´ ìƒì„± í›„ ë³´ê´€
 		
 		Iterator iter = prop.keySet().iterator();
 		
@@ -66,9 +66,9 @@ public class MainController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("¿äÃ»µé¾î¿È1");	
+		//System.out.println("ìš”ì²­ë“¤ì–´ì˜´1");	
 		
-		requestProc(req, resp); // req : Å¬¶óÀÌ¾ğÆ®¿¡¼­ ¿äÃ»ÇÏ´Â ¿äÃ»°´Ã¼, resp :
+		requestProc(req, resp); // req : í´ë¼ì´ì–¸íŠ¸ì—ì„œ ìš”ì²­í•˜ëŠ” ìš”ì²­ê°ì²´, resp :
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,29 +77,29 @@ public class MainController extends HttpServlet{
 	
 	public void requestProc(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
 		
-		// ¿äÃ» ÁÖ¼Ò¿¡¼­ service °´Ã¼ key ±¸ÇÏ±â
+		// ìš”ì²­ ì£¼ì†Œì—ì„œ service ê°ì²´ key êµ¬í•˜ê¸°
 		String path = req.getContextPath();
 		String uri = req.getRequestURI();
 		String key = uri.substring(path.length());
 		
-		// service °´Ã¼ map¿¡¼­ ²¨³»±â
-		CommonService instance = (CommonService)instances.get(key); // ´ÙÇü¼º : interface(CommonService)·Î Çüº¯È¯
+		// service ê°ì²´ mapì—ì„œ êº¼ë‚´ê¸°
+		CommonService instance = (CommonService)instances.get(key); // ë‹¤í˜•ì„± : interface(CommonService)ë¡œ í˜•ë³€í™˜
 		
-		// service °´Ã¼ ½ÇÇàÈÄ view ¸®ÅÏ ¹Ş±â
-		String result = instance.requestProc(req, resp); //result´Â ¹®ÀÚ¿­("redirect:/Jboard2/user/login.do")
+		// service ê°ì²´ ì‹¤í–‰í›„ view ë¦¬í„´ ë°›ê¸°
+		String result = instance.requestProc(req, resp); //resultëŠ” ë¬¸ìì—´("redirect:/Jboard2/user/login.do")
 		
-		if(result.startsWith("redirect:")) { //result°¡ ¸®´ÙÀÌ·ºÆ® ¸í·ÉÀÌ¶ó¸é
-			//¸®´ÙÀÌ·ºÆ®
+		if(result.startsWith("redirect:")) { //resultê°€ ë¦¬ë‹¤ì´ë ‰íŠ¸ ëª…ë ¹ì´ë¼ë©´
+			//ë¦¬ë‹¤ì´ë ‰íŠ¸
 			String redirectUrl = result.substring(9); // "/Jboard2/user/login.do"
 			resp.sendRedirect(redirectUrl);
 			
 		}else if(result.startsWith("json:")) {
-			// Json Ãâ·Â
+			// Json ì¶œë ¥
 			PrintWriter out = resp.getWriter();
-			out.print(result.substring(5)); //json:json.toString() Áß json.toString()
+			out.print(result.substring(5)); //json:json.toString() ì¤‘ json.toString()
 			
 		}else {
-			// View Æ÷¿öµå
+			// View í¬ì›Œë“œ
 			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
 			dispatcher.forward(req,resp);
 		}
