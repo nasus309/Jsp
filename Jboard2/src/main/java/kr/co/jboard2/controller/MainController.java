@@ -2,6 +2,7 @@ package kr.co.jboard2.controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class MainController extends HttpServlet{
 		
 		// 프로퍼티 파일 (액션주소 맵핑 파일) 경로 구하기
 		ServletContext ctx = config.getServletContext();
-		String path = ctx.getRealPath("/WEB-INF")+"/urlMapping.properties";
+		String path = ctx.getRealPath("/WEB-INF") + "/urlMapping.properties";  /* getRealPath("/") 는 webappp을 의미 */
 		
 		// 프로퍼티 파일 입력 스트림 연결
 		Properties prop = new Properties(); //hash map과 동일한 객체???
@@ -64,6 +65,9 @@ public class MainController extends HttpServlet{
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("요청들어옴1");	
+		
 		requestProc(req, resp); // req : 클라이언트에서 요청하는 요청객체, resp :
 	}
 	@Override
@@ -88,6 +92,11 @@ public class MainController extends HttpServlet{
 			//리다이렉트
 			String redirectUrl = result.substring(9); // "/Jboard2/user/login.do"
 			resp.sendRedirect(redirectUrl);
+			
+		}else if(result.startsWith("json:")) {
+			// Json 출력
+			PrintWriter out = resp.getWriter();
+			out.print(result.substring(5)); //json:json.toString() 중 json.toString()
 			
 		}else {
 			// View 포워드

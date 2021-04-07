@@ -5,6 +5,35 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="/Jboard2/css/style.css"/>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+	    $(function(){
+	    
+	    	$('input[name=uid]').focusout(function(){
+	    		
+	    		var uid = $(this).val();
+	    		var jsonData = {'uid' : uid}; //자바스크립트에서 객체 표기?? json 형식?
+	    		
+	    		$.ajax({
+	    			url: '/Jboard2/user/checkUid.do', //어디로 
+	    			type: 'get', //get?post?
+	    			data: jsonData, //전송 할 데이터
+	    			dataType: 'json', //서버에서 되돌려 받는 값(대부분 json)
+	    			//서버가 도착하면 function 실행
+	    			success: function(data){ //여기서 data는 0(id없음) or 1(id있음) 임
+	    				//alert(data.result);
+	    				
+	    				if(data.result == 0){
+	    					$('.resultId').css('color', 'green').text('사용 가능한 아이디 입니다.');
+	    				}else{	
+	    					$('.resultId').css('color', 'red').text('이미 사용중인 아이디 입니다.');
+	    				}
+
+	    			}
+				}
+			});
+	    });
+    </script>
 </head>
 <body>
     <div id="wrapper">

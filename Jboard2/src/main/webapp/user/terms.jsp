@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <section id="user" class="terms">
+       <section id="user" class="terms">
             <table>
                 <caption>사이트 이용약관</caption>
                 <tr>

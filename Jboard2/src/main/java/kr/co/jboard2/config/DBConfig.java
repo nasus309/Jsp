@@ -5,27 +5,27 @@ import java.sql.DriverManager;
 
 public class DBConfig {
 	
-	// ?‹±ê¸??†¤ ê°ì²´
+	// ì‹±ê¸€í†¤ ê°ì²´
 	private static DBConfig instance = new DBConfig();
-	private DBConfig() {} // ?™¸ë¶??—?„œ DBConfig?˜ ê°ì²´ ?ƒ?„±?„(?ƒ?„±? ?˜¸ì¶œì„) ëª»í•˜ê²? ?•œ?‹¤.
+	private DBConfig() {} // ì™¸ë¶€ì—ì„œ DBConfigì˜ ê°ì²´ ìƒì„±ì„(ìƒì„±ì í˜¸ì¶œì„) ëª»í•˜ê²Œ í•œë‹¤.
 	
-	//DBConfig?— ???•œ getter
+	//DBConfigì— ëŒ€í•œ getter
 	public static DBConfig getInstance() {
 		return instance;
 	}
 	
-	// DB ? •ë³?
+	// DB ì •ë³´
 	private final String HOST= "jdbc:mysql://192.168.10.114:3306/knh";
 	private final String USER = "knh";
 	private final String PASS = "1234";
 	
 	public Connection getConnection() throws Exception {
-		// 1?‹¨ê³?
+		// 1ë‹¨ê³„
 		Class.forName("com.mysql.jdbc.Driver");
-		// 2?‹¨ê³?
+		// 2ë‹¨ê³„
 		Connection conn = DriverManager.getConnection(HOST, USER, PASS);
 		
-		return conn; //conn?˜ return ???…?? Connection?´?‹¤
+		return conn; //connì˜ return íƒ€ì…ì€ Connectionì´ë‹¤
 	}
 	
 }

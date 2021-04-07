@@ -1,7 +1,11 @@
 package kr.co.jboard2.config;
 
 public class Sql {
-
+	
+	public static final String SELECT_COUNT_USER = "SELECT COUNT(`uid`) FROM `JBOARD_USER` WHERE `uid`=?;";
+	
+	public static final String SELECT_USER  = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=PASSWORD(?);";
+	
 	public static final String INSERT_USER ="INSERT INTO `JBOARD_USER` SET "
 											   +"`uid`=?,"
 											   + "`pass`=PASSWORD(?),"
@@ -15,10 +19,11 @@ public class Sql {
 											   + "`regip`=?,"
 											   + "`rdate`=NOW();";
 	
+	
 	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
 		
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;"; 
-	//parent=0 : ?›ê¸??— ???•´?„œë§? countë¥? êµ¬í•œ?‹¤. ?•„?‹ˆë©? ë²ˆí˜¸ê°? ?Œ“ê¸?ê¹Œì? ?¬?•¨?•´?„œ ?´?ƒ?•´ì§?! 
+	//parent=0 : ?ï¿½ï¿½ï¿½??ï¿½ï¿½ ???ï¿½ï¿½?ï¿½ï¿½ï¿½? countï¿½? êµ¬í•œ?ï¿½ï¿½. ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë²ˆí˜¸ï¿½? ?ï¿½ï¿½ï¿½?ê¹Œï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?! 
 	
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	
@@ -31,9 +36,9 @@ public class Sql {
 	public static final String SELECT_ARTICLES  = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
 												+ "ON a.uid = b.uid "
-												+ "WHERE `parent`=0 " // ?Œ“ê¸??„ ? œ?™¸?•œ ?›ê¸?ë§? ê°?? ¸?˜¨?‹¤.
+												+ "WHERE `parent`=0 " // ?ï¿½ï¿½ï¿½??ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?ï¿½? ï¿½??ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.
 												+ "ORDER BY `seq` DESC "
-												+ "LIMIT ?, 10;"; // LIMIT : (index,ê°œìˆ˜) indexë¶??„° ëª‡ê°œ?
+												+ "LIMIT ?, 10;"; // LIMIT : (index,ê°œìˆ˜) indexï¿½??ï¿½ï¿½ ëª‡ê°œ?
 									
 	public static final String SELECT_COMMNETS ="SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
@@ -44,7 +49,7 @@ public class Sql {
 	public static final String INSERT_ARTICLES = "INSERT INTO `JBOARD_ARTICLE` SET"
 												+ "`title`=?,"
 												+ "`content`=?, "
-												+ "`file`=?, " //?ŒŒ?¼ ? •ë³´ë•Œë¬¸ì— ì¶”ê??
+												+ "`file`=?, " //?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ë³´ë•Œë¬¸ì— ì¶”ï¿½??
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";
