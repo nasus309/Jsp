@@ -27,10 +27,13 @@ public class CheckUidService implements CommonService {
 		JsonObject json = new JsonObject();
 		json.addProperty("result", count);
 		
+		/* controller 로 json 데이터 형태의 result를 return 
+		   만약에 아이디 있으면 {"result" : 1} */
+		
 		return "json:"+json.toString(); // 제이슨 데이터를 문자열로
 		
-		// controller 로 json 데이터 형태의 result를 return
+		
 	}
-
+	
 		
 }
