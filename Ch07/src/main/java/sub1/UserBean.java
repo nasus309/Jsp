@@ -2,7 +2,7 @@ package sub1;
 
 
 public class UserBean {
-	//home ¶Ç´Â tableÀÇ ÇàÀ» °´Ã¼·Î °®´Â 
+	//home ë˜ëŠ” tableì˜ í–‰ì„ ê°ì²´ë¡œ ê°–ëŠ” ..
 	
 	private String uid;
 	private String name;
