@@ -1,7 +1,8 @@
 package sub1;
 
+
 public class UserBean {
-	// home 또는 table의 행을 객체로 갖는 ..
+	//home 또는 table의 행을 객체로 갖는 
 	
 	private String uid;
 	private String name;
