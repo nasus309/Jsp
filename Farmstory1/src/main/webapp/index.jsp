@@ -1,5 +1,23 @@
+<%@page import="kr.co.farmstory1.config.Sql"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="kr.co.farmstory1.config.DBConfig"%>
+<%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<%
+	// 1,2단계
+	Connection conn = DBConfig.getInstance().getConnection();
+	
+	// 3단계
+	PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE_LATEST);
+	psmt.executeUpdate();
+	
+	// 4단계
+	
+	// 5단계
+	// 6단계
+%>
+
 <main>
     <div class="slider">
 

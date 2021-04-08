@@ -2,6 +2,8 @@ package kr.co.farmstory1.config;
 
 public class Sql {
 	
+	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
+
 	public static final String SELECT_USER  = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=PASSWORD(?);";
 	public static final String INSERT_USER ="INSERT INTO `JBOARD_USER` SET "
 											   +"`uid`=?,"
@@ -16,10 +18,13 @@ public class Sql {
 											   + "`regip`=?,"
 											   + "`rdate`=NOW();";
 	
-	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
 		
+	public static final String SELECT_ARTICLE_LATEST = "(SELECT * FROM `JBOARD_ARTICLE` WHERE `cate`='grow' ORDER BY `seq` DESC LIMIT 5) UNION "
+													 + "(SELECT * FROM `JBOARD_ARTICLE` WHERE `cate`='school' ORDER BY `seq` DESC LIMIT 5) UNION "
+													 + "(SELECT * FROM `JBOARD_ARTICLE` WHERE `cate`='story' ORDER BY `seq` DESC LIMIT 5);";
+	
+	
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;"; 
-	//parent=0 : ?õêÍ∏??óê ???ï¥?ÑúÎß? countÎ•? Íµ¨Ìïú?ã§. ?ïÑ?ãàÎ©? Î≤àÌò∏Í∞? ?åìÍ∏?ÍπåÏ? ?è¨?ï®?ï¥?Ñú ?ù¥?ÉÅ?ï¥Ïß?! 
 	
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	
@@ -32,9 +37,9 @@ public class Sql {
 	public static final String SELECT_ARTICLES  = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
 												+ "ON a.uid = b.uid "
-												+ "WHERE `parent`=0 " // ?åìÍ∏??ùÑ ?†ú?ô∏?ïú ?õêÍ∏?Îß? Í∞??†∏?ò®?ã§.
-												+ "ORDER BY `seq` DESC "
-												+ "LIMIT ?, 10;"; // LIMIT : (index,Í∞úÏàò) indexÎ∂??Ñ∞ Î™áÍ∞ú?
+												+ "WHERE `parent`=0 AND `cate`=? " // Ïπ¥ÌÖåÍ≥†Î¶¨Ïóê Ìï¥ÎãπÌïòÎäî Í∏Ä Í∞ÄÏ†∏Ïò§Í∏∞
+												+ "ORDER BY `seq` DESC;";
+
 									
 	public static final String SELECT_COMMNETS ="SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
@@ -42,10 +47,10 @@ public class Sql {
 												+ "WHERE `parent`=? "
 												+ "ORDER BY `seq` ASC;";
 	
-	public static final String INSERT_ARTICLES = "INSERT INTO `JBOARD_ARTICLE` SET"
+	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET"
+												+ "`cate`=?,"   //cateÏ∂îÍ∞Ä!
 												+ "`title`=?,"
 												+ "`content`=?, "
-												+ "`file`=?, " //?åå?ùº ?†ïÎ≥¥ÎïåÎ¨∏Ïóê Ï∂îÍ??
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";

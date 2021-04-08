@@ -15,9 +15,8 @@ public class ArticleBean {
 	private String regip;
 	private String rdate;
 	
-	// ì¶”ê? ?•„?“œ
 	private String nick;
-	private FileBean fb; // ?™œ.....?
+	private FileBean fb; 
 	
 	public FileBean getFb() {
 		return fb;
