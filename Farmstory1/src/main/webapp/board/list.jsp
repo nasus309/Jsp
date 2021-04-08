@@ -2,6 +2,8 @@
 <%@ include file="../_header.jsp" %>
 <%
 	String group = request.getParameter("group");
+	String cate  = request.getParameter("cate");
+
 	String path = "./_aside_"+group+".jsp";	
 %>
 
@@ -37,16 +39,15 @@
     </div>
 
     <!-- 글쓰기 버튼 -->
-    <a href="./write.html" class="btnWrite">글쓰기</a>
+    <a href="/Farmstory1/board/write.jsp?group=<%= group %>&cate=<%= cate %>" class="btnWrite">글쓰기</a>
 
 </section>
         
         <%-- 구조 추가 --%>
+        
         <!-- 내용 끝 -->
-
 </article>
 </section>
-
 </div>
       <%-- 구조 끝 --%>  
 <%@ include file="../_footer.jsp" %>
