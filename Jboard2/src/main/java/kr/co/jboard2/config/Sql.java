@@ -46,7 +46,7 @@ public class Sql {
 												+ "WHERE `parent`=? "
 												+ "ORDER BY `seq` ASC;";
 	
-	public static final String INSERT_ARTICLES = "INSERT INTO `JBOARD_ARTICLE` SET"
+	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`title`=?,"
 												+ "`content`=?, "
 												+ "`file`=?, " //?��?�� ?��보때문에 추�??

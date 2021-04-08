@@ -93,8 +93,11 @@ public class ArticleDao {
 		
 	};
 	
-	public int selectMaxSeq() throws Exception {
+	public int selectMaxSeq() {
 		
+		int seq=0;
+		
+		try {
 		// 1,2단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		
@@ -105,7 +108,7 @@ public class ArticleDao {
 		ResultSet rs = stmt.executeQuery(Sql.SELECT_MAX_SEQ);
 		
 		// 5단계
-		int seq=0;
+		
 		if(rs.next()) {
 			seq= rs.getInt(1);
 		}
@@ -115,22 +118,29 @@ public class ArticleDao {
 		stmt.close();
 		conn.close();
 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return seq;
 	}
 
-	public int insertArticle(ArticleVo article) throws Exception{
+	public int insertArticle(ArticleVo article) {
 		
+		
+		try {
 		// 1,2단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		
 		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLES);
+		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
 	
 		psmt.setString(1, article.getTitle());
 		psmt.setString(2, article.getContent());
 		psmt.setInt(3, article.getFile()); //왜 int??????
 		psmt.setString(4, article.getUid()); // 원래 user.uid였음
 		psmt.setString(5, article.getRegip());
+		
 		
 		// 4단계
 		psmt.executeUpdate();
@@ -140,16 +150,22 @@ public class ArticleDao {
 		psmt.close();
 		conn.close();
 		
-		// 방금 INSERT한 글번호 가져오기
-		int seq = selectMaxSeq();
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
 		
+		// 방금 INSERT한 글번호 가져오기
+		
+		int seq = selectMaxSeq();
 		return seq;//글번호
 		
 		
 	};
-	public void insertComment(String parent, String content,String uid, String regip) throws Exception {
+	public void insertComment(String parent, String content,String uid, String regip) {
 		//parent 원래 int인데 String으로 
 		
+		try {
 		// 1,2 단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		
@@ -166,9 +182,15 @@ public class ArticleDao {
 		//6단계
 		psmt.close();
 		conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void insertFile(int seq, String oldName, String newName) throws Exception { //String parent를 int seq로 ! 왜?
+	public void insertFile(int seq, String oldName, String newName)  { //String parent를 int seq로 ! 왜?
+		
+		try {
 		// 1,2 단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		// 3단계
@@ -185,10 +207,17 @@ public class ArticleDao {
 		psmt.close();
 		conn.close();
 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
- 	public ArticleVo selectArticle(String seq) throws Exception{
+ 	public ArticleVo selectArticle(String seq) {
 		
+ 		ArticleVo ab = new ArticleVo();
+ 		
+ 		try {
 		// 1,2 단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		// 3단계
@@ -198,7 +227,7 @@ public class ArticleDao {
 		ResultSet rs = psmt.executeQuery();
 		
 		// 5단계
-		ArticleVo ab = new ArticleVo();
+		
 		FileVo fb = new FileVo();
 		
 		if(rs.next()) {
@@ -229,6 +258,10 @@ public class ArticleDao {
 		rs.close();
 		psmt.close();
 		conn.close();
+		
+ 		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return ab;
 		
@@ -342,8 +375,9 @@ public class ArticleDao {
 		
 	};
 	
-	public void updateArticleCommentInc(String seq) throws Exception{
-			
+	public void updateArticleCommentInc(String seq) {
+		
+		try {
 		// 1,2 단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		// 3단계
@@ -357,6 +391,9 @@ public class ArticleDao {
 		psmt.close();
 		conn.close();
 		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void updateArticleCommentDec(String seq) throws Exception{

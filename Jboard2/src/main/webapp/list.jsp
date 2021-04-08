@@ -27,7 +27,7 @@
                     <c:forEach var="article" items="${requestScope.articles}"> <!-- items= "{articles}"도 가능 -->
 	                    <tr>
 	                        <td>${listStartNum = listStartNum -1}</td>   <%-- ${article.getSeq()} --%><%-- ${article.seq} 도 가능 --%>
-	                        <td><a href="./view.html">${article.title}</a>&nbsp;[${article.comment}]</td>
+	                        <td><a href="/Jboard2/view.do?seq=${article.seq}">${article.title}</a>&nbsp;[${article.comment}]</td>
 	                        <td>${article.nick}</td>
 	                        <td>${article.rdate.substring(2, 10)}</td>
 	                        <td>${article.hit}</td>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- 글쓰기 버튼 -->
-            <a href="./write.html" class="btnWrite">글쓰기</a>
+            <a href="/Jboard2/write.do" class="btnWrite">글쓰기</a>
 
         </section>
     </div>    
