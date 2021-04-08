@@ -1,3 +1,10 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="kr.co.farmstory1.bean.ArticleBean"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="kr.co.farmstory1.config.Sql"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="kr.co.farmstory1.config.DBConfig"%>
@@ -9,13 +16,38 @@
 	Connection conn = DBConfig.getInstance().getConnection();
 	
 	// 3단계
-	PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE_LATEST);
-	psmt.executeUpdate();
+	Statement stmt = conn.createStatement();
 	
 	// 4단계
+	ResultSet rs = stmt.executeQuery(Sql.SELECT_ARTICLE_LATEST);
 	
 	// 5단계
+	Map<String, List<ArticleBean>> map = new HashMap<>();
+	
+	for(int k=0 ; k<3 ; k++){
+		
+		String key = null;
+		List<ArticleBean> list =  new ArrayList<>();
+		
+		for(int i=0 ; i<5 ; i++){
+			
+			rs.next();
+			
+			ArticleBean article = new ArticleBean();
+			article.setSeq(rs.getInt(1));
+			article.setTitle(rs.getString(5));
+			article.setRdate(rs.getString(11).substring(2, 10));
+			list.add(article);
+			
+			key = rs.getString(4);
+		}
+		map.put(key, list);
+	}
+	
 	// 6단계
+	rs.close();
+	stmt.close();
+	conn.close();
 %>
 
 <main>
@@ -46,93 +78,39 @@
             <a href="#"><img src="/Farmstory1/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
             <img src="/Farmstory1/img/main_latest1_img.jpg" alt="이미지"/>
             <table border="0">
+            <% for(ArticleBean article : map.get("grow")){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="#"><%= article.getTitle() %></a></td>
+                    <td><%= article.getRdate() %></td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+            <% } %>
             </table>
         </div>
         <div>
             <a href="#"><img src="/Farmstory1/img/main_latest2_tit.png" alt="귀농학교"/></a>
             <img src="/Farmstory1/img/main_latest2_img.jpg" alt="이미지"/>
             <table border="0">
+            <% for(ArticleBean article : map.get("school")){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="#"><%= article.getTitle() %></a></td>
+                    <td><%= article.getRdate() %></td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+            <% } %>
             </table>
         </div>
         <div>
             <a href="#"><img src="/Farmstory1/img/main_latest3_tit.png" alt="농작물 이야기"/></a>
             <img src="/Farmstory1/img/main_latest3_img.jpg" alt="이미지"/>
             <table border="0">
+            <% for(ArticleBean article : map.get("story")){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="#"><%= article.getTitle() %></a></td>
+                    <td><%= article.getRdate() %></td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+            <% } %>
             </table>
         </div>
         
