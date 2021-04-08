@@ -20,7 +20,7 @@
 	                <tr>
 	                    <td>첨부파일</td>
 	                    <td>
-	                        <a href="#">${ab.fb.oldName}</a>
+	                        <a href="/Jboard2/download.do?seq=${ab.fb.seq}">${ab.fb.oldName}</a>
 	                        <span>${ab.fb.download}회 다운로드</span>
 	                    </td> 
 	                </tr>
@@ -47,7 +47,7 @@
 	                        <span>${suser.nick}</span>
 	                        <span>20-05-13</span>
 	                    </span>
-	                    <textarea name="comment" readonly>댓글 샘플입니다.</textarea>
+	                    <textarea name="comment" readonly>댓글 내용</textarea>
 	                    <div>
 	                        <a href="#">삭제</a>
 	                        <a href="#">수정</a>

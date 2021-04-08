@@ -1,8 +1,12 @@
 package kr.co.jboard2.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.jboard2.service.CommonService;
+import kr.co.jboard2.vo.FileVo;
 
 public class MainController extends HttpServlet{
 
@@ -97,6 +102,38 @@ public class MainController extends HttpServlet{
 			// Json 출력
 			PrintWriter out = resp.getWriter();
 			out.print(result.substring(5)); //json:json.toString() 중 json.toString()
+			
+		}else if(result.startsWith("file:")) {
+			
+			String fname = result.substring(5);
+			
+			FileVo vo = (FileVo) req.getAttribute("fileVo");
+			
+			// 파일 다운로드 response 헤더수정
+			resp.setContentType("application/octet-stream");
+			resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(fname, "utf-8"));
+			resp.setHeader("Content-Transfer-Encoding", "binary");
+			resp.setHeader("Pragma", "no-cache");
+			resp.setHeader("Cache-Control", "private");
+			
+			// 파일 데이터 스트림 작업
+			String filePath = req.getServletContext().getRealPath("/file");
+			File file = new File(filePath+"/"+vo.getNewName());
+			
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+			BufferedOutputStream bos = new BufferedOutputStream(resp.getOutputStream());
+			
+			while(true) {
+				int data = bis.read();
+				
+				if(data == -1) {
+					break;
+				}
+				bos.write(data);
+			}
+			
+			bos.close();
+			bis.close();
 			
 		}else {
 			// View 포워드

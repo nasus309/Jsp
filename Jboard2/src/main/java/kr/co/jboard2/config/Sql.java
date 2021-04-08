@@ -21,7 +21,9 @@ public class Sql {
 	
 	
 	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
-		
+	
+	public static final String SELECT_FILE ="SELECT * FROM `JBOARD_FILE` WHERE `seq`=?;";
+	
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;"; 
 	//parent=0 : ?���??�� ???��?���? count�? 구한?��. ?��?���? 번호�? ?���?까�? ?��?��?��?�� ?��?��?���?! 
 	
@@ -69,6 +71,7 @@ public class Sql {
 											+ "`rdate`=NOW();";
 												
 	
+	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `JBOARD_FILE` SET `download` = `download` + 1 WHERE `seq`=?;";
 	
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `JBOARD_ARTICLE` SET `hit` = `hit` + 1 WHERE `seq` = ?;";
 	
