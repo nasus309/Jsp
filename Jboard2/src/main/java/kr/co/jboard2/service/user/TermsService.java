@@ -11,13 +11,13 @@ public class TermsService implements CommonService {
 	
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
-		/* Controller°¡ Service¿¡¼­ ¹Ş¾Æ¿Â view¸¦ forward. */
+		/* Controllerê°€ Serviceì—ì„œ ë°›ì•„ì˜¨ viewë¥¼ forward. */
 		
 		TermsVo vo;
 		try {
 			vo = UserDao.getInstance().selectTerms();
 			
-			//View¿¡¼­ vo °´Ã¼¸¦ ÂüÁ¶ÇÏ±â À§ÇØ Controller-Service-View¿¡¼­ °øÀ¯µÇ´Â requset °´Ã¼¸¦ ÀÌ¿ë
+			//Viewì—ì„œ vo ê°ì²´ë¥¼ ì°¸ì¡°í•˜ê¸° ìœ„í•´ Controller-Service-Viewì—ì„œ ê³µìœ ë˜ëŠ” requset ê°ì²´ë¥¼ ì´ìš©
 			req.setAttribute("vo", vo);
 			
 		} catch (Exception e) {
@@ -26,11 +26,11 @@ public class TermsService implements CommonService {
 		}
 		
 		
-		// 1,2´Ü°è
-		// 3´Ü°è
-		// 4´Ü°è
-		// 5´Ü°è
-		// 6´Ü°è
+		// 1,2ë‹¨ê³„
+		// 3ë‹¨ê³„
+		// 4ë‹¨ê³„
+		// 5ë‹¨ê³„
+		// 6ë‹¨ê³„
 		
 		return "/user/terms.jsp";
 	}

@@ -12,9 +12,9 @@ public class RegisterService implements CommonService {
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
 		
-		if(req.getMethod().equals("POST")) { //post ¿äÃ»ÀÌ¸é	
+		if(req.getMethod().equals("POST")) { //post ìš”ì²­ì´ë©´	
 			
-			// Àü¼Û µ¥ÀÌÅÍ ¼ö½Å
+			// ì „ì†¡ ë°ì´í„° ìˆ˜ì‹ 
 			String uid = req.getParameter("uid");
 			String pass = req.getParameter("pass1");
 			String name = req.getParameter("name");
@@ -43,7 +43,7 @@ public class RegisterService implements CommonService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "redirect:/Jboard2/user/login.do"; //·Î±×ÀÎ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
+			return "redirect:/Jboard2/user/login.do"; //ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ë¦¬ë‹¤ì´ë ‰íŠ¸
 			
 		}else {
 			return "/user/register.jsp";

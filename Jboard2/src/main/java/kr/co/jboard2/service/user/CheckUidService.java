@@ -23,14 +23,14 @@ public class CheckUidService implements CommonService {
 			e.printStackTrace();
 		}
 		
-		// Json µ¥ÀÌÅÍ »ı¼º
+		// Json ë°ì´í„° ìƒì„±
 		JsonObject json = new JsonObject();
 		json.addProperty("result", count);
 		
-		/* controller ·Î json µ¥ÀÌÅÍ ÇüÅÂÀÇ result¸¦ return 
-		   ¸¸¾à¿¡ ¾ÆÀÌµğ ÀÖÀ¸¸é {"result" : 1} */
+		/* controller ë¡œ json ë°ì´í„° í˜•íƒœì˜ resultë¥¼ return 
+		   ë§Œì•½ì— ì•„ì´ë”” ìˆìœ¼ë©´ {"result" : 1} */
 		
-		return "json:"+json.toString(); // Á¦ÀÌ½¼ µ¥ÀÌÅÍ¸¦ ¹®ÀÚ¿­·Î
+		return "json:"+json.toString(); // ì œì´ìŠ¨ ë°ì´í„°ë¥¼ ë¬¸ìì—´ë¡œ
 		
 		
 	}

@@ -25,7 +25,7 @@ public class Sql {
 	public static final String SELECT_FILE ="SELECT * FROM `JBOARD_FILE` WHERE `seq`=?;";
 	
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;"; 
-	//parent=0 : ?���??�� ???��?���? count�? 구한?��. ?��?���? 번호�? ?���?까�? ?��?��?��?�� ?��?��?���?! 
+	//parent=0 : 원글에 대해서만 count를 구한다. 아니면 번호가 댓글까지 포함해서 이상해짐! 
 	
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	
@@ -38,9 +38,9 @@ public class Sql {
 	public static final String SELECT_ARTICLES  = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
 												+ "ON a.uid = b.uid "
-												+ "WHERE `parent`=0 " // ?���??�� ?��?��?�� ?���?�? �??��?��?��.
+												+ "WHERE `parent`=0 " // 댓글을 제외한 원글만 가져온다.
 												+ "ORDER BY `seq` DESC "
-												+ "LIMIT ?, 10;"; // LIMIT : (index,개수) index�??�� 몇개?
+												+ "LIMIT ?, 10;"; // LIMIT : (index,개수) index부터 몇개?
 									
 	public static final String SELECT_COMMNETS ="SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
@@ -51,7 +51,7 @@ public class Sql {
 	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`title`=?,"
 												+ "`content`=?, "
-												+ "`file`=?, " //?��?�� ?��보때문에 추�??
+												+ "`file`=?, " //파일 정보때문에 추가?
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";
