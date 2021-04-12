@@ -14,7 +14,7 @@
         </aside>
         <article>
             <nav>
-                <img src="../img/sub_nav_tit_cate1_tit1.png" alt="인사말"/>
+                <img src="/Farmstory2/img/sub_nav_tit_cate1_tit1.png" alt="인사말"/>
                 <p>
                     HOME > 팜스토리소개 > <em>인사말</em>
                 </p>
@@ -27,6 +27,5 @@
 
         </article>
     </section>
-
 </div>
 <jsp:include page="../_footer.jsp"></jsp:include>

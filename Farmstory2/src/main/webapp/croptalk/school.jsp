@@ -17,7 +17,7 @@
                 <a href="#">고객센터</a>
             </p>
             <img src="../img/head_txt_img.png" alt="3만원 이상 무료배송"/>
-
+            
             <ul class="gnb">
                 <li><a href="#">팜스토리소개</a></li>
                 <li><a href="#"><img src="../img/head_menu_badge.png" alt="30%"/>장바구니</a></li>
@@ -57,8 +57,8 @@
             </section>
 
         </div>
-
-
+        
+        
         <footer>
             <img src="../img/footer_logo.png" alt="로고"/>
             <p>
@@ -70,4 +70,4 @@
         </footer>
     </div>    
 </body>
-</html> 
+</html>
