@@ -2,6 +2,8 @@ package kr.co.farmstory2.config;
 
 public class Sql {
 	
+	public static final String SELECT_COUNT_USER = "SELECT COUNT(`uid`) FROM `JBOARD_USER` WHERE `uid`=?;";
+	
 	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
 
 	public static final String SELECT_USER  = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=PASSWORD(?);";
@@ -47,6 +49,8 @@ public class Sql {
 												+ "WHERE `parent`=? "
 												+ "ORDER BY `seq` ASC;";
 	
+	public static final String SELECT_FILE = "";
+	
 	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET"
 												+ "`cate`=?,"   //cate추가!
 												+ "`title`=?,"
@@ -75,6 +79,8 @@ public class Sql {
 	
 	public static final String UPDATE_ARTICLE_COMMENT_INC = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` + 1 WHERE `seq` = ?;";
 	public static final String UPDATE_ARTICLE_COMMENT_DEC = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` - 1 WHERE `seq` = ?;";
+	
+	public static final String UPDATE_FILE_DOWNLOAD = "";
 	
 	public static final String DELETE_COMMNET = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?;";
 	

@@ -10,7 +10,7 @@
     <h3>글목록</h3>
     <article>
         <p>
-            홍길동님 반갑습니다.
+            ${suser.nick}님 반갑습니다.
             <a href="/Farmstory2/user/login.do" class="logout">[로그아웃]</a>
         </p>
         <table border="0">
@@ -21,13 +21,15 @@
                 <th>날짜</th>
                 <th>조회</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}">테스트 제목입니다.</a>&nbsp;[3]</td>
-                <td>길동이</td>
-                <td>20-05-12</td>
-                <td>12</td>
-            </tr>
+            <c:forEach var="article" items="${articles}">
+	            <tr>
+	                <td>${article.seq}</td>
+	                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}&seq=${article.seq}">${article.title}</a>&nbsp;[3]</td>
+	                <td>${article.nick}</td>
+	                <td>${article.rdate}</td>
+	                <td>${article.hit}</td>
+	            </tr>
+            </c:forEach>
         </table>
     </article>
 
@@ -41,7 +43,7 @@
     </div>
 
     <!-- 글쓰기 버튼 -->
-    <a href="/Farmstory2/board/write.do" class="btnWrite">글쓰기</a>
+    <a href="/Farmstory2/board/write.do?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
 </section>
 
             <!-- 내용 끝 -->
