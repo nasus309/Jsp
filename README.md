@@ -6,7 +6,12 @@ Jsp 수업예제
 > JSP Hello World 출력 <br>
 > [Ch01](http://54.180.31.189:8080/Ch01/hello.jsp)
 ## Ch02
-> JSP 문법 (Scriptlet,Include,제어문)
+> JSP 문법 (Scriptlet,Include,제어문) <br>
+> [Ch02_1](http://54.180.31.189:8080/Ch02/2_1_Scriptlet.jsp)
+> [Ch02_2](http://54.180.31.189:8080/Ch02/2_2_Condition.jsp)
+> [Ch02_3](http://54.180.31.189:8080/Ch02/2_3_Loop.jsp)
+> [Ch02_4](http://54.180.31.189:8080/Ch02/2_4_Class.jsp)
+> [Ch02_5](http://54.180.31.189:8080/Ch02/2_5_Include.jsp)
 ## Ch03
 > JSP request, response 객체 
 ## Ch04
