@@ -4,7 +4,7 @@ Jsp 수업예제
 
 ## Ch01
 > JSP Hello World 출력 <br>
-> [Ch01](http://15.164.230.250:21/Ch01/hello.jsp)
+> [Ch01](http://15.164.230.250:8080/Ch01/hello.jsp)
 ## Ch02
 > JSP 문법 (Scriptlet,Include,제어문) <br>
 > [Ch02_1](http://15.164.230.250:8080/Ch02/2_1_Scriptlet.jsp) <br>
