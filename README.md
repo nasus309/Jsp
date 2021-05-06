@@ -47,9 +47,9 @@ Jsp 수업예제
 > [Ch09_4](http://15.164.230.250:8080/Ch09/9_4_JSTL.jsp)
 ## Ch10
 > JSP Model 2 사용하기 <br>
-> [Ch10_1](http://15.164.230.250:8080/Ch10/greeting.jsp) <br>
-> [Ch10_2](http://15.164.230.250:8080/Ch10/hello.jsp) <br>
-> [Ch10_3](http://15.164.230.2509:8080/Ch10/welcome.jsp) 
+> [Ch10_1](http://15.164.230.250:8080/Ch10/greeting.do) <br>
+> [Ch10_2](http://15.164.230.250:8080/Ch10/hello.do) <br>
+> [Ch10_3](http://15.164.230.2509:8080/Ch10/welcome.do) 
 ## Farmstory1
 > JSP Model 1을 사용한 Farmstory 웹 구현
 ## Farmstory2
