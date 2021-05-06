@@ -22,8 +22,7 @@ Jsp 수업예제
 > [Ch04_2](http://15.164.230.250:8080/Ch04/4_2_ForwardTag.jsp) 
 ## Ch05
 > JavaBean 사용하기 <br>
-> [Ch05_1](http://15.164.230.250:8080/Ch05/5_1_JavaBean.jsp) <br>
-> [Ch05_2](http://15.164.230.250:8080/Ch05/5_2_UseBean.jsp) 
+> [Ch05_1,2](http://15.164.230.250:8080/Ch05/5_1_JavaBean.jsp) <br>
 ## Ch06
 > Cookie와 Session <br>
 > [Ch06_1](http://15.164.230.250:8080/Ch06/6_1_Cookie.jsp) <br>
