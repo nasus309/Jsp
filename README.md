@@ -8,10 +8,10 @@ Jsp 수업예제
 ## Ch02
 > JSP 문법 (Scriptlet,Include,제어문) <br>
 > [Ch02_1](http://15.164.230.250:8080/Ch02/2_1_Scriptlet.jsp) <br>
-> [Ch02_2](http://54.180.31.189:8080/Ch02/2_2_Condition.jsp) <br>
-> [Ch02_3](http://54.180.31.189:8080/Ch02/2_3_Loop.jsp) <br>
-> [Ch02_4](http://54.180.31.189:8080/Ch02/2_4_Class.jsp) <br>
-> [Ch02_5](http://54.180.31.189:8080/Ch02/2_5_Include.jsp) <br>
+> [Ch02_2](http://http://15.164.230.250:8080/Ch02/2_2_Condition.jsp) <br>
+> [Ch02_3](http://15.164.230.250:8080/Ch02/2_3_Loop.jsp) <br>
+> [Ch02_4](http://15.164.230.250:8080/Ch02/2_4_Class.jsp) <br>
+> [Ch02_5](http://15.164.230.250:8080/Ch02/2_5_Include.jsp) <br>
 ## Ch03
 > JSP request, response 객체  <br>
 > [Ch03_1](http://54.180.31.189:8080/Ch03/3_1_Request.jsp) <br>
