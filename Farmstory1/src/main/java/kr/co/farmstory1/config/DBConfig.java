@@ -15,7 +15,7 @@ public class DBConfig {
 	}
 	
 	// DB 정보
-	private final String HOST= "jdbc:mysql://192.168.10.114:3306/knh";
+	private final String HOST= "jdbc:mysql://127.0.0.1:3306/knh";
 	private final String USER = "knh";
 	private final String PASS = "1234";
 	

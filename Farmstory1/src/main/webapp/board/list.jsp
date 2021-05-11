@@ -50,7 +50,6 @@
 	psmt.close();
 	conn.close();
 	rs.close();
-	
 %>
 <jsp:include page="<%= path %>"></jsp:include>
 <section id="board" class="list">
@@ -67,9 +66,9 @@
             <% for(ArticleBean article : articles){ %>
             <tr>
                 <td><%= article.getSeq() %></td>
-                <td><a href="./view.html"><%= article.getTitle() %></a>&nbsp;[3]</td>
+                <td><a href="/Farmstory1/board/view.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                 <td><%= article.getNick() %></td>
-                <td><%= article.getRdate() %></td>
+                <td><%= article.getRdate().substring(0,19) %></td>
                 <td><%= article.getHit() %></td>
             </tr>
             <% } %>
