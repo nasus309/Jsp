@@ -8,12 +8,12 @@
 <body>
 	<h3>로그인 성공</h3>
 	<%
-	 String uid = (String) session.getAttribute("uid");
+		String uid = (String) session.getAttribute("uid");
 	%>
 	<p>
-		<%= uid %>님 반갑습니다.<br/>
+		<%= uid %>님 반갑습니다.<br />
 		<a href="./logout.jsp">로그아웃</a>
 	</p>
-
+	
 </body>
 </html>

@@ -9,12 +9,12 @@
 	<h3>2.클라이언트 쿠키 확인</h3>
 	<%
 		Cookie[] cookies = request.getCookies();
-		
+	
 		for(Cookie cookie : cookies){
 	%>
 		<p>
 			쿠키명 : <%= cookie.getName() %><br />
-			쿠키값 : <%= cookie.getValue() %><br />
+			쿠키값 : <%= cookie.getValue() %><br />		
 		</p>
 	<%
 		}
