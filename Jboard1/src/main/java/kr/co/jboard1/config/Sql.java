@@ -4,7 +4,7 @@ public class Sql {
 
 	public static final String INSERT_USER ="INSERT INTO `JBOARD_USER` SET "
 											   +"`uid`=?,"
-											   + "`pass`=PASSWORD(?),"
+											   + "`pass`=SHA2(?,224),"
 											   + "`name`=?,"
 											   + "`nick`=?,"
 											   + "`email`=?,"
@@ -71,4 +71,5 @@ public class Sql {
 	public static final String UPDATE_ARTICLE_COMMENT_DEC = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` - 1 WHERE `seq` = ?;";
 	
 	public static final String DELETE_COMMNET = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?;";
+	
 }

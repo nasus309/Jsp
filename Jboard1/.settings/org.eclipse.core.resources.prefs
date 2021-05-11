@@ -1,3 +1,12 @@
 eclipse.preferences.version=1
+encoding//src/main/java/kr/co/jboard1/bean=UTF-8
+encoding//src/main/java/kr/co/jboard1/bean/ArticleBean.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/bean/FileBean.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/bean/TermsBean.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/bean/UserBean.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/config/DBConfig.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/config/Sql.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/dao/ArticleDao.java=UTF-8
+encoding//src/main/java/kr/co/jboard1/dao/UserDao.java=UTF-8
 encoding//src/main/webapp/css/style.css=UTF-8
 encoding/<project>=UTF-8

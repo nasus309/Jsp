@@ -11,7 +11,7 @@
 	
 	// 데이터베이스 처리 - 댓글 삭제
 	ArticleDao dao = ArticleDao.getInstance();
-	dao.deleteComment(seq);
+	//dao.deleteComment(seq);
 	
 	// 데이터베이스 처리 - 원글의 댓글 카운트 - 1
 	dao.updateArticleCommentDec(parent); //seq 아니고 parent다 왜???!

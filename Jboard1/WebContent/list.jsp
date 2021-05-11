@@ -26,18 +26,18 @@
 	// 페이지 관련 변수 
 	ArticleDao dao = ArticleDao.getInstance();
 	
-	int total 		= dao.selectCountArticle();
+	int total = dao.selectCountArticle();
 	int lastPageNum = dao.getLastPageNum(total);
 	int currentPage = dao.getCurrentPage(pg);
-	int start 		= dao.getLimitStart(currentPage); //limit용 start 변수
-	int[] groups 	= dao.getPageGroup(currentPage, lastPageNum);
-	int pageStartNum = dao.getPageStartNum(total, start);
-		
-	// 데이터베이스 처리
-	List<ArticleBean> articles = dao.selectArticles(start);
+	int start = dao.getLimitStart(currentPage); //limit용 start 변수
+	int[] groups = dao.getPageGrop(currentPage, lastPageNum);
+	int pageStartNum = dao.getPageStartNum(total, start);  
 	
+	// 데이터베이스 처리
+	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start); //왜 start???
+		
 %>
-<!DOCTYPE html>
+<!DOCTYPE html>'
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,7 +63,7 @@
                     </tr>
                     <% for(ArticleBean ab: articles) { %>
                     <tr>
-                        <td><%= pageStartNum-- %></td>
+                        <td><%= pageStartNum-- /* ab.getSeq() */ %></td>
                         <td><a href="/Jboard1/view.jsp?seq=<%= ab.getSeq() %>"><%= ab.getTitle() %></a>&nbsp;[<%= ab.getComment() %>]</td>
                         <td><%= ab.getNick() %></td>
                         <td><%= ab.getRdate().substring(2,10) %></td>
@@ -81,7 +81,7 @@
                 <% } %>
                 
                 <% for(int i=groups[0]; i<=groups[1];i++){ %> <!--groupStart는 groups[0], groupEnd는 groups[1]-->
-                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current":"off" %>"><%= i %></a>                
+                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current":"off" %>"><%= i %></a>                 
                 <% } %>  
                 
                 <% if(groups[1] < lastPageNum){ %>            
