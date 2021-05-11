@@ -8,16 +8,16 @@
 <section id="board" class="modify">
     <h3>글수정</h3>
     <article>
-        <form action="#">
+        <form action="/Farmstory2/board/modify.do?group=${group}&cate=${cate}&seq=${seq}" method="post">
             <table>
                 <tr>
                     <td>제목</td>
-                    <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                    <td><input type="text" name="title" value="${vo.title}"/></td>
                 </tr>
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content"></textarea>                                
+                        <textarea name="content">${vo.content}</textarea>                                
                     </td>
                 </tr>
                 <tr>

@@ -4,10 +4,10 @@
 <section id="board" class="write">
     <h3>글쓰기</h3>
     <article>
-        <form action="/Farmstory2/board/write.do" method="post">
-        <input type="hidden" name="uid" value="${sessionScope.suser.uid}"/>
-        <input type="hidden" name="group" value="${group}"/>
-        <input type="hidden" name="cate" value="${cate}"/>
+        <form action="/Farmstory2/board/write.do" method="post" enctype="multipart/form-data">
+	        <input type="hidden" name="uid" value="${sessionScope.suser.uid}"/>
+	        <input type="hidden" name="group" value="${group}"/>
+	        <input type="hidden" name="cate" value="${cate}"/>
             <table>
                 <tr>
                     <td>제목</td>

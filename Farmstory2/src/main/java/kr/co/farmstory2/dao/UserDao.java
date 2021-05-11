@@ -53,14 +53,14 @@ public class UserDao {
 		int count = 0;
 		
 		try {
-			Connection conn = DBConfig.getInstance().getConnection();
-			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_USER);
-			psmt.setString(1, uid);
-			
-			ResultSet rs = psmt.executeQuery();
-			
-			if(rs.next()) {
-				count = rs.getInt(1);
+				Connection conn = DBConfig.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_USER);
+				psmt.setString(1, uid);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
 			}
 			
 			rs.close();
@@ -75,6 +75,91 @@ public class UserDao {
 		return count;
 		
 	}
+	
+	public int selectNickCount(String nick) {
+		
+		int count = 0;
+		
+		try {
+				Connection conn = DBConfig.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_NICK);
+				psmt.setString(1, nick);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+			}
+			
+			rs.close();
+			psmt.close();
+			conn.close();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+		
+	}
+	public int selectHpCount(String hp) {
+		
+		int count = 0;
+		
+		try {
+				Connection conn = DBConfig.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_HP);
+				psmt.setString(1, hp);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+			}
+			
+			rs.close();
+			psmt.close();
+			conn.close();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+		
+	}
+	
+	public int selectEmailCount(String email) {
+		
+		int count = 0;
+		
+		try {
+				Connection conn = DBConfig.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_EMAIL);
+				psmt.setString(1, email);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+			}
+			
+			rs.close();
+			psmt.close();
+			conn.close();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+		
+	}
+
+	
 	public UserVo selectUser(String uid, String pass) {
 		
 		UserVo vo = null;

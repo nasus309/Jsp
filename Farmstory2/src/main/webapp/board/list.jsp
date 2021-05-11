@@ -23,10 +23,10 @@
             </tr>
             <c:forEach var="article" items="${articles}">
 	            <tr>
-	                <td>${article.seq}</td>
-	                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}&seq=${article.seq}">${article.title}</a>&nbsp;[3]</td>
+	                <td>${listStartNum = listStartNum -1}</td>
+	                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}&seq=${article.seq}">${article.title}</a>&nbsp;[${article.comment}]</td>
 	                <td>${article.nick}</td>
-	                <td>${article.rdate}</td>
+	                <td>${article.rdate.substring(2,10)}</td>
 	                <td>${article.hit}</td>
 	            </tr>
             </c:forEach>
@@ -35,11 +35,15 @@
 
     <!-- 페이지 네비게이션 -->
     <div class="paging">
-        <a href="#" class="prev">이전</a>
-        <a href="#" class="num current">1</a>                
-        <a href="#" class="num">2</a>                
-        <a href="#" class="num">3</a>                
-        <a href="#" class="next">다음</a>
+    	<c:if test="${groups[0] > 1}">
+        	<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${groups[0] - 1}" class="prev">이전</a>
+        </c:if>
+        <c:forEach var="i" begin="${groups[0]}" end="${groups[1]}">
+        	<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a> 
+        </c:forEach>
+        <c:if test="${groups[1] < lastPageNum}">       
+        	<a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}&pg=${groups[1] + 1}" class="next">다음</a>
+        </c:if>
     </div>
 
     <!-- 글쓰기 버튼 -->

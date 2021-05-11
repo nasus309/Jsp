@@ -159,6 +159,10 @@ main > .slider > .banner > img:nth-child(3) {
 }
 
 /* 메인 - quick */
+
+.hello{
+	font-size : 20px;
+}
 main > .quick {
     height: 74px;
     overflow: hidden;
@@ -246,6 +250,10 @@ main > .info > div:nth-child(3) {
 
 main > .info > div > .tit {
     margin-bottom: 16px;
+}
+
+main > .info > div > .txt{
+	padding-left : 80px;
 }
 
 main > .info > div > .account {

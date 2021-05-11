@@ -15,7 +15,10 @@
         </aside>
         <article>
             <nav>
-                <img src="../img/sub_nav_tit_cate3_tit1.png" alt="농작물이야기"/>
+            	 <c:if test="${cate eq 'story'}"><img src="../img/sub_nav_tit_cate3_tit1.png" alt="농작물이야기"/></c:if>
+            	 <c:if test="${cate eq 'grow'}"><img src="../img/sub_nav_tit_cate3_tit2.png" alt="텃밭가꾸기"/></c:if>
+            	 <c:if test="${cate eq 'school'}"><img src="../img/sub_nav_tit_cate3_tit3.png" alt="귀농학교"/></c:if>
+                
                 <p>
                     HOME > 농작물이야기 > 
                     <c:if test="${cate eq 'story'}"><em>농작물이야기</em></c:if>

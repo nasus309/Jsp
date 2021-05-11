@@ -137,6 +137,7 @@ public class MainController extends HttpServlet{
 			
 		}else {
 			// View 포워드
+			// 확장자가 jsp 일때만 가능하게********************
 			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
 			dispatcher.forward(req,resp);
 		}

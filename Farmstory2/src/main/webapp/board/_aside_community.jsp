@@ -18,14 +18,14 @@
         <article>
             <nav>
                 <c:if test="${cate eq 'notice'}"><img src="../img/sub_nav_tit_cate5_tit1.png" alt="공지사항"/></c:if>
-                <c:if test="${cate eq 'menu'}"><img src="../img/sub_nav_tit_cate5_tit2.png" alt="오늘의메뉴"/></c:if>
+                <c:if test="${cate eq 'menu'}"><img src="../img/sub_nav_tit_cate5_tit2.png" alt="오늘의식단"/></c:if>
                 <c:if test="${cate eq 'chef'}"><img src="../img/sub_nav_tit_cate5_tit3.png" alt="나도요리사"/></c:if>
-                <c:if test="${cate eq 'qna'}"><img src="../img/sub_nav_tit_cate5_tit3.png" alt="고객문의"/></c:if>
-                <c:if test="${cate eq 'faq'}"><img src="../img/sub_nav_tit_cate5_tit3.png" alt="자주묻는질문"/></c:if>
+                <c:if test="${cate eq 'qna'}"><img src="../img/sub_nav_tit_cate5_tit4.png" alt="고객문의"/></c:if>
+                <c:if test="${cate eq 'faq'}"><img src="../img/sub_nav_tit_cate5_tit5.png" alt="자주묻는질문"/></c:if>
                 <p>
                     HOME > 커뮤니티 > 
                     <c:if test="${cate eq 'notice'}"><em>공지사항</em></c:if>
-                    <c:if test="${cate eq 'menu'}"><em>오늘의메뉴</em></c:if>
+                    <c:if test="${cate eq 'menu'}"><em>오늘의식단</em></c:if>
                     <c:if test="${cate eq 'chef'}"><em>나도요리사</em></c:if>
                     <c:if test="${cate eq 'qna'}"><em>고객문의</em></c:if>
                     <c:if test="${cate eq 'faq'}"><em>자주묻는질문</em></c:if>

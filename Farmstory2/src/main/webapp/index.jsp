@@ -69,17 +69,20 @@
 
     <div class="info">
         <div>
-            <img src="/Farmstory2/img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
-
+            <img src="/Farmstory2/img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/><br/>
+			<img src="/Farmstory2/img/main_sub2_cs_img.png"/>
+			<img src="/Farmstory2/img/main_sub2_cs_txt.png"/><br/><br/>
+			<a href="/Farmstory2/board/list.do?group=community&cate=qna"><img src="/Farmstory2/img/main_sub2_cs_bt1.png" /></a>
+			<a href="/Farmstory2/board/list.do?group=community&cate=faq"><img src="/Farmstory2/img/main_sub2_cs_bt2.png" /></a>		
         </div>
         <div>
             <img src="/Farmstory2/img/main_sub2_account_tit.png" class="tit" alt="계좌안내"/>
             <p class="account">
-                기업은행 123-456789-01-01-012<br />
-                국민은행 01-1234-56789<br />
-                우리은행 123-456789-01-01-012<br />
-                하나은행 123-456789-01-01<br />
-                예 금 주 (주)팜스토리
+		                기업은행 123-456789-01-01-012<br/>
+		                국민은행 01-1234-56789<br />
+		                우리은행 123-456789-01-01-012<br/>
+		                하나은행 123-456789-01-01<br />
+		                예 금 주 (주)팜스토리
             </p>
         </div>
         <div>
@@ -91,23 +94,23 @@
                 </ul>
                 <div id="tabs-1">
                     <ul>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
+                    	<c:forEach var="notice" items="${notices}">
+                        	<li><a href="/Farmstory2/board/view.do?group=community&cate=notice&seq=${notice.seq}">${notice.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="tabs-2">
                     <ul>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
+                        <c:forEach var="qna" items="${qnas}">
+                        	<li><a href="/Farmstory2/board/view.do?group=community&cate=qna&seq=${qna.seq}">${qna.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="tabs-3">
                     <ul>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
+                         <c:forEach var="faq" items="${faqs}">
+                        	<li><a href="/Farmstory2/board/view.do?group=community&cate=faq&seq=${faq.seq}">${faq.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

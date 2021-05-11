@@ -1,36 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../_header.jsp"></jsp:include>
-<script>
-	$(function(){
-		
-		$('input[name=uid]').focusout(function(){
-			
-			var uid = $(this).val();
-			
-			var jsonData = {'uid':uid};
-			
-			//alert(uid);
-			
-			$.ajax({
-				url: '/Farmstory2/user/checkUid.do',
-				type: 'get',
-				data: 'jsonData',
-				dataType: 'json',
-				success: function(data){
-					
-					if(data.result == 1){
-						$('.resultId').css('color','red').text('이미 사용중인 아이디입니다.');
-					}else{
-						$('.resultId').css('color','green').text('사용가능한 아이디입니다.');
-					}
-					
-				}
-			});
-		});		
-			
-	});
-
-</script>
+<script src="/Farmstory2/js/checkUser.js"></script>
+<script src="/Farmstory2/js/zipcode.js"></script>
+<script src="/JFarmstory2/js/validation.js"></script>
 <section id="user" class="register">
     <form action="#" method="POST">
         <table border="1">
@@ -76,12 +48,14 @@
                 <td>E-Mail</td>
                 <td>
                     <input type="email" name="email" placeholder="이메일 입력"/>
+                    <span class="resultEmail"></span> 
                 </td>
             </tr>
             <tr>
                 <td>휴대폰</td>
                 <td>
                     <input type="text" name="hp" placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
+                	<span class="resultHp"></span> 
                 </td>
             </tr>
             <tr>

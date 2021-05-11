@@ -16,8 +16,14 @@ public class IndexService implements CommonService {
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Map<String, List<ArticleVo>> map = ArticleDao.getInstance().selectLatests();
+		List<ArticleVo> notices = ArticleDao.getInstance().selectNotice();
+		List<ArticleVo> qnas = ArticleDao.getInstance().selectQna();
+		List<ArticleVo> faqs = ArticleDao.getInstance().selectFaq();
 		
 		req.setAttribute("map", map);
+		req.setAttribute("notices", notices);
+		req.setAttribute("qnas", qnas);
+		req.setAttribute("faqs", faqs);
 		
 		return "/index.jsp";
 	}

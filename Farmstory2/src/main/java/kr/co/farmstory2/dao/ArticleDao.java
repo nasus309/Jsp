@@ -101,21 +101,23 @@ public class ArticleDao {
 		
 	}
 	
-	public int selectCountArticle() {
+	public int selectCountArticle(String cate) {
 		int total = 0;
 		
 		try {
 		Connection conn = DBConfig.getInstance().getConnection();
-		Statement stmt = conn.createStatement();
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_ARTICLE);
+		psmt.setString(1, cate);
 		
-		ResultSet rs = stmt.executeQuery(Sql.SELECT_COUNT_ARTICLE);
+		ResultSet rs = psmt.executeQuery();
+		
 		
 		if(rs.next()){
 			total = rs.getInt(1);
 		}
 		
 		rs.close();
-		stmt.close();
+		psmt.close();
 		conn.close();
 		
 		}catch (Exception e) {
@@ -199,6 +201,96 @@ public class ArticleDao {
 		
 	}
 	
+	public List<ArticleVo> selectNotice() {
+		
+		List<ArticleVo> notices = new ArrayList<>();
+		
+		try {
+	
+			Connection conn = DBConfig.getInstance().getConnection();
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(Sql.SELECT_ARTICLE_NOTICE);
+			
+			while(rs.next()) {
+				ArticleVo ab = new ArticleVo();
+				ab.setSeq(rs.getInt(1));
+				ab.setTitle(rs.getString(5));
+				
+				notices.add(ab);
+			}
+		
+			stmt.close();
+			conn.close();
+		
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return notices;
+		
+	}
+	
+	public List<ArticleVo> selectQna() {
+		
+		List<ArticleVo> qnas = new ArrayList<>();
+		
+		try {
+	
+			Connection conn = DBConfig.getInstance().getConnection();
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(Sql.SELECT_ARTICLE_QNA);
+			
+			while(rs.next()) {
+				ArticleVo ab = new ArticleVo();
+				ab.setSeq(rs.getInt(1));
+				ab.setTitle(rs.getString(5));
+				
+				qnas.add(ab);
+			}
+		
+			stmt.close();
+			conn.close();
+		
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return qnas;
+		
+	}
+	
+	public List<ArticleVo> selectFaq() {
+		
+		List<ArticleVo> faqs = new ArrayList<>();
+		
+		try {
+	
+			Connection conn = DBConfig.getInstance().getConnection();
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(Sql.SELECT_ARTICLE_FAQ);
+			
+			while(rs.next()) {
+				ArticleVo ab = new ArticleVo();
+				ab.setSeq(rs.getInt(1));
+				ab.setTitle(rs.getString(5));
+				
+				faqs.add(ab);
+			}
+		
+			stmt.close();
+			conn.close();
+		
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return faqs;
+		
+	}
+	
 	public int insertArticle(ArticleVo article) {
 		
 		
@@ -212,8 +304,9 @@ public class ArticleDao {
 		psmt.setString(1, article.getCate());
 		psmt.setString(2, article.getTitle());
 		psmt.setString(3, article.getContent());
-		psmt.setString(4, article.getUid());
-		psmt.setString(5, article.getRegip());
+		psmt.setInt(4, article.getFile());
+		psmt.setString(5, article.getUid());
+		psmt.setString(6, article.getRegip());
 		
 		// 4단계
 		psmt.executeUpdate();
@@ -339,7 +432,7 @@ public class ArticleDao {
 		return ab;
 		
 	}
-	public List<ArticleVo> selectArticles(String cate) {
+	public List<ArticleVo> selectArticles( String cate, int start) {
 		
 		List<ArticleVo> articles = new ArrayList<>(); // 맨 끝에 return articles 때문에 밖에서 해줌
 		
@@ -350,6 +443,8 @@ public class ArticleDao {
 		// 3단계   
 		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLES);
 		psmt.setString(1, cate);
+		psmt.setInt(2, start);
+		
 		
 		// 4단계
 		ResultSet rs = psmt.executeQuery();
@@ -450,10 +545,30 @@ public class ArticleDao {
 		
 	}
 	
-	public void updateArticle() throws Exception{};
-	
-	public void updateArticelHit(String seq) throws Exception{ //seq는 원래 int인데 String으로 바꿔줌
+	public void updateArticle(String title, String content, String seq){
 		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			//psmt.setString(3, vo.getFile());
+			psmt.setString(3, seq);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	};
+	
+	public void updateArticelHit(String seq) { //seq는 원래 int인데 String으로 바꿔줌
+		
+		
+		try {
 		// 1,2 단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		// 3단계
@@ -466,6 +581,10 @@ public class ArticleDao {
 		// 6단계
 		psmt.close();
 		conn.close();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	};
 	
@@ -490,40 +609,72 @@ public class ArticleDao {
 		}
 	}
 	
-	public void updateArticleCommentDec(String seq) throws Exception{
+	public void updateArticleCommentDec(String seq){
 		
-		// 1,2 단계
-		Connection conn = DBConfig.getInstance().getConnection();
-		// 3단계
-		PreparedStatement psmt =conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_DEC);
-		psmt.setString(1, seq);
-		// 4단계
-		psmt.executeUpdate();
-		
-		// 5단계
-		// 6단계
-		psmt.close();
-		conn.close();
+		try {
+			// 1,2 단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt =conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_DEC);
+			psmt.setString(1, seq);
+			// 4단계
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	
-	public void deleteArticle() throws Exception{};
+	public int deleteArticle(String seq){
+		
+		int result = 0; 
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt =conn.prepareStatement(Sql.DELETE_ARTICLE);
+			psmt.setString(1, seq);
+			psmt.setString(2, seq);
+			// 4단계
+			result = psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	};
 	
-	public void deleteComment(String seq) throws Exception{
+	public void deleteComment(String seq) {
 		
-		// 1,2 단계
-		Connection conn = DBConfig.getInstance().getConnection();
-		// 3단계
-		PreparedStatement psmt =conn.prepareStatement(Sql.DELETE_COMMNET);
-		psmt.setString(1, seq);
-		// 4단계
-		psmt.executeUpdate();
-		
-		// 5단계
-		// 6단계
-		psmt.close();
-		conn.close();
+		try {
+			// 1,2 단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt =conn.prepareStatement(Sql.DELETE_COMMENT);
+			psmt.setString(1, seq);
+			// 4단계
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	};
 	

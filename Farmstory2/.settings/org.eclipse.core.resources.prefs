@@ -3,5 +3,6 @@ encoding//src/main/java/kr/co/farmstory2/config/DBConfig.java=UTF-8
 encoding//src/main/java/kr/co/farmstory2/config/Sql.java=UTF-8
 encoding//src/main/java/kr/co/farmstory2/controller/MainController.java=UTF-8
 encoding//src/main/java/kr/co/farmstory2/dao/ArticleDao.java=UTF-8
+encoding//src/main/java/kr/co/farmstory2/service/board/DownloadService.java=UTF-8
 encoding//src/main/java/kr/co/farmstory2/vo/ArticleVo.java=UTF-8
 encoding//src/main/webapp/css/style.css=UTF-8

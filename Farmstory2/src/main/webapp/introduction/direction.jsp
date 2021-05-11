@@ -21,7 +21,10 @@
             </nav>
 
             <!-- 내용 시작 -->
-
+			<div class="dir_content">
+				<img src="../img/map.png" />
+			</div>
+			
 
             <!-- 내용 끝 -->
 
