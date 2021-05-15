@@ -15,9 +15,9 @@ public class DBConfig {
 	}
 	
 	// DB 정보
-	private final String HOST= "jdbc:mysql://127.0.0.1:3306/knh";
+	private final String HOST= "jdbc:mysql://15.164.230.250:3306/knh?useUnicode=true&characterEncoding=UTF-8";
 	private final String USER = "knh";
-	private final String PASS = "1234";
+	private final String PASS = "960222";
 	
 	public Connection getConnection() throws Exception {
 		// 1단계

@@ -18,7 +18,7 @@
 	
 	// 3단계
 	// 준비된 형식...? ?는 자료형 신경쓰지 않아도 된다!
-	String sql = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=PASSWORD(?);";
+	String sql = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=SHA2(?,224);";
 	PreparedStatement psmt = conn.prepareStatement(sql);
 	psmt.setString(1, uid);
 	psmt.setString(2, pass);
