@@ -44,7 +44,7 @@
                 	</c:otherwise>
                 </c:choose>
                 
-                <a href="">고객센터</a>
+                <a href="mailto:mail.mail.com">고객센터</a>
             </p>
             <img src="/Farmstory2/img/head_txt_img.png" alt="3만원 이상 무료배송"/>
             
