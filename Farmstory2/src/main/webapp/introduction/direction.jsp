@@ -22,7 +22,17 @@
 
             <!-- 내용 시작 -->
 			<div class="dir_content">
-				<img src="../img/map.png" />
+			<p style="line-height:20px">
+				<span style="font-size:1.1em">▣  팜스토리 </span><br/>
+				&nbsp&nbsp 주소: 경기도 이천시 잘한다구 신난다동 123<br/>
+				&nbsp&nbsp 전화: 01-234-5678<br/>
+			</p>
+			<br/><br/>
+			<p style="font-size:1.1em">
+				▣  찾아오시는길
+			</p>
+			<br/>
+			<hr>
 			</div>
 			
 

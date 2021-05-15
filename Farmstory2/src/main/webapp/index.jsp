@@ -20,8 +20,8 @@
     </div>
 
     <div class="quick">
-        <a href="#"><img src="/Farmstory2/img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-        <a href="#"><img src="/Farmstory2/img/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
+        <a href="/Farmstory2/board/list.do?group=community&cate=menu"><img src="/Farmstory2/img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
+        <a href="/Farmstory2/board/list.do?group=community&cate=chef"><img src="/Farmstory2/img/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
     </div>
 
     <div class="latest">
@@ -32,7 +32,7 @@
             	<c:forEach var="vo" items="${map.get('grow')}">
 	                <tr>
 	                    <td>></td>
-	                    <td><a href="#">${vo.title}</a></td>
+	                    <td><a href="/Farmstory2/board/view.do?group=croptalk&cate=grow&seq=${vo.seq}">${vo.title}</a></td>
 	                    <td>${vo.rdate}</td>
 	                </tr>
                 </c:forEach>
@@ -45,7 +45,7 @@
                 <c:forEach var="vo" items="${map.get('school')}">
 	                <tr>
 	                    <td>></td>
-	                    <td><a href="#">${vo.title}</a></td>
+	                    <td><a href="/Farmstory2/board/view.do?group=croptalk&cate=school&seq=${vo.seq}">${vo.title}</a></td>
 	                    <td>${vo.rdate}</td>
 	                </tr>
                 </c:forEach>
@@ -58,7 +58,7 @@
                <c:forEach var="vo" items="${map.get('story')}">
 	                <tr>
 	                    <td>></td>
-	                    <td><a href="#">${vo.title}</a></td>
+	                    <td><a href="/Farmstory2/board/view.do?group=croptalk&cate=story&seq=${vo.seq}">${vo.title}</a></td>
 	                    <td>${vo.rdate}</td>
 	                </tr>
                 </c:forEach>
@@ -70,10 +70,18 @@
     <div class="info">
         <div>
             <img src="/Farmstory2/img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/><br/>
-			<img src="/Farmstory2/img/main_sub2_cs_img.png"/>
-			<img src="/Farmstory2/img/main_sub2_cs_txt.png"/><br/><br/>
+			<img src="/Farmstory2/img/main_sub2_cs_img.png" style="float:left; padding-right:20px"/>
+			<img src="/Farmstory2/img/main_sub2_cs_txt.png" style="float:left; padding-right:20px"/>
+			<span style="float:left">
+				평일: AM 09:00 ~ PM 06:00<br>
+				점심: PM 12:00 ~ PM 01:00<br>
+				토, 일요일, 공휴일 휴무
+			</span>
+			<br style="clear:both"/>
+			<br/>
 			<a href="/Farmstory2/board/list.do?group=community&cate=qna"><img src="/Farmstory2/img/main_sub2_cs_bt1.png" /></a>
 			<a href="/Farmstory2/board/list.do?group=community&cate=faq"><img src="/Farmstory2/img/main_sub2_cs_bt2.png" /></a>		
+			<a href="https://parcel.epost.go.kr/auth.EpostLogin.parcel"><img src="/Farmstory2/img/main_sub2_cs_bt3.png" /></a>
         </div>
         <div>
             <img src="/Farmstory2/img/main_sub2_account_tit.png" class="tit" alt="계좌안내"/>
